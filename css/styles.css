@@ -1,0 +1,377 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.step {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.step.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+h2 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+h3 {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+h4 {
+    color: #333;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+p {
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Profile Card */
+.profile-card {
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card p {
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+.btn-small {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: all 0.2s;
+}
+
+.btn-small:hover {
+    background: #e0e0e0;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    color: white;
+}
+
+.form-group select,
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    background: white;
+    color: #333;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 16px;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:disabled {
+    background: #999;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-success {
+    background: #28a745;
+    color: white;
+    width: 100%;
+}
+
+.btn-success:hover {
+    background: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+}
+
+.btn-back {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 8px 16px;
+    margin-bottom: 20px;
+    width: auto;
+    margin-top: 0;
+}
+
+.btn-back:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Leccion */
+.leccion-header {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.leccion-section {
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.texto-box {
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 4px;
+    line-height: 1.7;
+    color: #333;
+    margin: 0;
+}
+
+/* Vocabulary Grid */
+.vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 8px;
+}
+
+.vocab-item {
+    background: #f5f5f5;
+    padding: 8px;
+    border-radius: 4px;
+    border: 0.5px solid #ddd;
+    font-size: 13px;
+}
+
+.vocab-item-en {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 2px;
+}
+
+.vocab-item-es {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Ejercicios */
+.ejercicio {
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    border: 0.5px solid #ddd;
+}
+
+.ejercicio-tipo {
+    font-size: 11px;
+    font-weight: 600;
+    color: #999;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+.ejercicio-pregunta {
+    font-size: 13px;
+    color: #333;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.ejercicio-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 13px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    color: #333;
+}
+
+.ejercicio-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Respuestas */
+.respuesta {
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.respuesta-correcta {
+    background: #d4edda;
+    border-left: 4px solid #28a745;
+    color: #155724;
+}
+
+.respuesta-incorrecta {
+    background: #f8d7da;
+    border-left: 4px solid #dc3545;
+    color: #721c24;
+}
+
+.respuesta-texto {
+    font-style: italic;
+    opacity: 0.8;
+    margin-top: 4px;
+}
+
+/* Score */
+.resultado-score {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.score-number {
+    font-size: 48px;
+    font-weight: 700;
+    color: #667eea;
+}
+
+/* Debilidades */
+.debilidad-item {
+    padding: 8px;
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    color: #856404;
+    margin-bottom: 8px;
+    border-radius: 2px;
+    font-size: 13px;
+}
+
+.debilidad-tema {
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .leccion-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .leccion-header span {
+        margin-right: 0 !important;
+        margin-bottom: 12px;
+    }
+
+    .vocab-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    .score-number {
+        font-size: 36px;
+    }
+
+    .btn {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App de Inglés - CEFR Adaptativo</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="app" class="container">
+        
+        <!-- STEP 1: Inicio -->
+        <div id="step-inicio" class="step active">
+            <div class="header">
+                <h1>📚 App de Inglés</h1>
+                <p class="subtitle">Lecciones adaptativas (sin conexión)</p>
+            </div>
+            
+            <div class="profile-card">
+                <p><strong>Alumno ID:</strong> <span id="alumno-id">-</span></p>
+                <p><strong>Nivel:</strong> <span id="nivel-actual">A1</span></p>
+                <div id="debilidades-display" style="display: none;">
+                    <p><strong>Debilidades:</strong> <span id="debilidades-list">-</span></p>
+                </div>
+                <button class="btn-small" onclick="limpiarDatos()">🗑️ Limpiar datos</button>
+            </div>
+
+            <div class="form-group">
+                <label for="nivel-select">Nivel CEFR:</label>
+                <select id="nivel-select">
+                    <option value="A1">A1 (Principiante)</option>
+                    <option value="B2">B2 (Intermedio-Alto)</option>
+                    <option value="C1">C1 (Avanzado)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="categoria-select">Categoría:</label>
+                <select id="categoria-select">
+                    <option value="clima">🌤️ Clima</option>
+                    <option value="familia">👨‍👩‍👧 Familia</option>
+                    <option value="deportes">⚽ Deportes</option>
+                    <option value="comida">🍽️ Comida</option>
+                    <option value="viajes">✈️ Viajes</option>
+                </select>
+            </div>
+
+            <button id="btn-generar" class="btn btn-primary" onclick="cargarLeccion()">
+                1. Cargar lección
+            </button>
+        </div>
+
+        <!-- STEP 2: Respondiendo -->
+        <div id="step-respondiendo" class="step">
+            <button class="btn btn-back" onclick="volverAlInicio()">← Volver</button>
+            
+            <div class="leccion-header">
+                <span id="leccion-emoji" style="font-size: 32px; margin-right: 12px;">🌤️</span>
+                <div>
+                    <h2 id="leccion-titulo">Título</h2>
+                    <p id="leccion-info" style="color: #666; margin: 0;">Palabras: -</p>
+                </div>
+            </div>
+
+            <div class="leccion-section">
+                <h3>Texto</h3>
+                <p id="leccion-texto" class="texto-box"></p>
+            </div>
+
+            <div class="leccion-section">
+                <h3>Traducción</h3>
+                <p id="leccion-traduccion" class="texto-box" style="font-style: italic;"></p>
+            </div>
+
+            <div class="leccion-section">
+                <h3>Vocabulario</h3>
+                <div id="leccion-vocab" class="vocab-grid"></div>
+            </div>
+
+            <div class="leccion-section">
+                <h3>Ejercicios</h3>
+                <div id="leccion-ejercicios"></div>
+            </div>
+
+            <button id="btn-corregir" class="btn btn-success" onclick="procesarLeccion()">
+                2. Corregir respuestas
+            </button>
+        </div>
+
+        <!-- STEP 3: Resultado -->
+        <div id="step-resultado" class="step">
+            <button class="btn btn-back" onclick="volverAlInicio()">← Volver</button>
+
+            <div class="resultado-score">
+                <div class="score-number" id="resultado-puntuacion">87%</div>
+                <p id="resultado-info" style="margin: 8px 0 0 0; color: #666;"></p>
+            </div>
+
+            <div class="leccion-section">
+                <h3>Respuestas</h3>
+                <div id="resultado-respuestas"></div>
+            </div>
+
+            <div id="resultado-debilidades-container" style="display: none;" class="leccion-section">
+                <h3>⚠️ Debilidades detectadas</h3>
+                <div id="resultado-debilidades"></div>
+            </div>
+
+            <button class="btn btn-primary" onclick="cargarLeccionSiguiente()">
+                3. Generar próxima lección
+            </button>
+        </div>
+    </div>
+
+    <script src="js/leciones.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

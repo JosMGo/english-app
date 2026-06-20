@@ -1,0 +1,56 @@
+📥 LISTA COMPLETA DE ARCHIVOS PARA DESCARGAR
+=============================================
+
+Descarga los siguientes 6 archivos en este ORDEN:
+
+1. 📄 index.html
+   → Guardar en: english-app/ (raíz)
+   → Este es el archivo principal
+
+2. 📄 styles.css
+   → Guardar en: english-app/css/
+   → Estilos de la app
+
+3. 📄 leciones.js
+   → Guardar en: english-app/js/
+   → Base de datos de lecciones
+
+4. 📄 utils.js
+   → Guardar en: english-app/js/
+   → Funciones auxiliares
+
+5. 📄 app.js
+   → Guardar en: english-app/js/
+   → Lógica principal
+
+6. 📄 README_SIN_API.md
+   → Guardar en: english-app/ (raíz)
+   → Instrucciones de uso (opcional)
+
+=============================================
+ESTRUCTURA FINAL:
+=============================================
+
+english-app/
+├── index.html
+├── README_SIN_API.md
+├── css/
+│   └── styles.css
+└── js/
+    ├── leciones.js
+    ├── utils.js
+    └── app.js
+
+=============================================
+PASOS:
+=============================================
+
+1. Crea una carpeta: english-app
+2. Dentro de english-app, crea: css/ y js/
+3. Descarga los 5 archivos .html/.css/.js
+4. Coloca cada uno en su carpeta
+5. Abre english-app en Visual Studio Code
+6. Click derecho en index.html → Open with Live Server
+7. ¡Listo!
+
+=============================================
