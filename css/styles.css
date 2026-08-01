@@ -8,7 +8,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #667eea 0%, #2AB7CA 100%);
     min-height: 100vh;
     padding: 20px 0;
 }
@@ -209,6 +209,18 @@ p {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+.audio-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+.audio-controls .btn-small {
+    margin-top: 0;
+}
+
 .texto-box {
     background: #f9f9f9;
     padding: 12px;
@@ -237,6 +249,24 @@ p {
     font-weight: 600;
     color: #333;
     margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.btn-vocab-audio {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 0 2px;
+    line-height: 1;
+    opacity: 0.7;
+}
+
+.btn-vocab-audio:hover {
+    opacity: 1;
 }
 
 .vocab-item-es {

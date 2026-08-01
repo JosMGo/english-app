@@ -49,13 +49,26 @@ function mostrarLeccion() {
     // Texto
     document.getElementById('leccion-texto').textContent = leccionActual.texto;
 
+    // Audio: usa mp3 pre-generado si existe (ver tools/generate_audio),
+    // si no, cae a la voz del navegador (Web Speech API)
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    const audio = document.getElementById('audio-leccion');
+    const btnAudio = document.getElementById('btn-audio');
+    audio.pause();
+    audio.src = `audio/${leccionActual.id}.mp3`;
+    btnAudio.style.display = 'inline-block';
+    btnAudio.textContent = '🔊 Escuchar';
+
     // Traducción
     document.getElementById('leccion-traduccion').textContent = leccionActual.traduccion;
 
     // Vocabulario
     const vocabHtml = leccionActual.vocab.map(word => `
         <div class="vocab-item">
-            <div class="vocab-item-en">${word.en}</div>
+            <div class="vocab-item-en">
+                ${word.en}
+                <button class="btn-vocab-audio" onclick="hablarPalabra('${word.en.replace(/'/g, "\\'")}')" title="Escuchar">🔊</button>
+            </div>
             <div class="vocab-item-es">${word.es}</div>
         </div>
     `).join('');
@@ -107,10 +120,67 @@ function mostrarLeccion() {
 }
 
 // ========================================
+// 2b. AUDIO DE LA LECCIÓN
+// ========================================
+
+function reproducirAudioLeccion() {
+    const audio = document.getElementById('audio-leccion');
+    const btnAudio = document.getElementById('btn-audio');
+
+    // Si ya está hablando/sonando, el botón actúa como "detener"
+    if ((window.speechSynthesis && window.speechSynthesis.speaking) || !audio.paused) {
+        if (window.speechSynthesis) window.speechSynthesis.cancel();
+        audio.pause();
+        btnAudio.textContent = '🔊 Escuchar';
+        return;
+    }
+
+    audio.play().then(() => {
+        btnAudio.textContent = '⏹️ Detener';
+        audio.onended = () => { btnAudio.textContent = '🔊 Escuchar'; };
+    }).catch(() => {
+        hablarLeccion();
+    });
+}
+
+function hablarLeccion() {
+    const btnAudio = document.getElementById('btn-audio');
+
+    if (!window.speechSynthesis) {
+        btnAudio.textContent = '⚠️ Audio no disponible';
+        return;
+    }
+
+    const velocidad = parseFloat(document.getElementById('velocidad-audio').value) || 1;
+    const utterance = new SpeechSynthesisUtterance(leccionActual.texto);
+    utterance.lang = 'en-US';
+    utterance.rate = velocidad;
+
+    utterance.onstart = () => { btnAudio.textContent = '⏹️ Detener'; };
+    utterance.onend = () => { btnAudio.textContent = '🔊 Escuchar'; };
+    utterance.onerror = () => { btnAudio.textContent = '⚠️ Audio no disponible'; };
+
+    window.speechSynthesis.speak(utterance);
+}
+
+function hablarPalabra(palabra) {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(palabra);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.9;
+    window.speechSynthesis.speak(utterance);
+}
+
+// ========================================
 // 3. PROCESAR LECCIÓN
 // ========================================
 
 function procesarLeccion() {
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    document.getElementById('audio-leccion').pause();
+
     const respuestasCorregidas = [];
     let totalPuntos = 0;
     let totalEjercicios = 0;
@@ -245,6 +315,8 @@ function mostrarResultado() {
 // ========================================
 
 function volverAlInicio() {
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    document.getElementById('audio-leccion').pause();
     document.getElementById('nivel-select').value = perfil.nivel;
     actualizarMostrador(perfil);
     mostrarStep('step-inicio');

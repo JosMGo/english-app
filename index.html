@@ -65,6 +65,15 @@
             <div class="leccion-section">
                 <h3>Texto</h3>
                 <p id="leccion-texto" class="texto-box"></p>
+                <div class="audio-controls">
+                    <button id="btn-audio" class="btn-small" onclick="reproducirAudioLeccion()">🔊 Escuchar</button>
+                    <select id="velocidad-audio" class="btn-small">
+                        <option value="1">Velocidad normal</option>
+                        <option value="0.75">Velocidad lenta</option>
+                        <option value="0.55">Muy lenta</option>
+                    </select>
+                </div>
+                <audio id="audio-leccion" preload="none"></audio>
             </div>
 
             <div class="leccion-section">
